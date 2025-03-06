@@ -1,6 +1,6 @@
 import React from "react";
 
-const Login = () => {
+const Dashboard = () => {
   return (
     <div>
       <h1>Login Page</h1>
@@ -8,4 +8,4 @@ const Login = () => {
   );
 };
 
-export default Login;  // ✅ Make sure this line exists
+export default Dashboard;  // ✅ Make sure this line exists
