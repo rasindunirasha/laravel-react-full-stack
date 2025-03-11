@@ -1,14 +1,19 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom"; // ✅ Import Navigate
+import { useStateContext } from "../contexts/ContextProvider"; // ✅ Correct import
 
 const DefaultLayout = () => {
+  const { user, token } = useStateContext(); // ✅ Corrected function name
+
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
+
   return (
     <div>
-      <h2>Welcome to the App</h2>
       <Outlet /> {/* This renders child routes like Dashboard & Users */}
     </div>
   );
 };
 
 export default DefaultLayout;
-
