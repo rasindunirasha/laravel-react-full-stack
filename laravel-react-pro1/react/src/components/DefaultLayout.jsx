@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet, Navigate } from "react-router-dom"; // ✅ Import Navigate
+import { Outlet, Navigate, Link } from "react-router-dom"; // ✅ Import Navigate
 import { useStateContext } from "../contexts/ContextProvider"; // ✅ Correct import
 
 const DefaultLayout = () => {
@@ -9,9 +9,31 @@ const DefaultLayout = () => {
     return <Navigate to="/login" />;
   }
 
+  const onLogout = (ev)=>{
+    ev.preventDefault()
+  }
+
   return (
-    <div>
-      <Outlet /> {/* This renders child routes like Dashboard & Users */}
+    <div id="defaultLayout">
+      <aside>
+        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/users">Users</Link>
+      </aside>
+      <div className="content">
+        <header>
+          <div>
+            Header
+          </div>
+          <div>
+            {user.name}
+            <a href="#" className="btn-logout" onClick={onLogout}>Logout</a>
+          </div>
+        </header>
+        <main>
+          <Outlet/>
+        </main>
+      </div>
+
     </div>
   );
 };
